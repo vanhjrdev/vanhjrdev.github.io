@@ -1,7 +1,4 @@
 let gIsLight = false;
-/* ============================================
-   0. BOOT SCREEN
-   ============================================ */
 (function () {
     const screen = document.getElementById('boot-screen');
     const textEl = document.getElementById('boot-text');
@@ -39,9 +36,6 @@ let gIsLight = false;
     }
     nextLine();
 })();
-/* ============================================
-   1. MATRIX RAIN GỐC + TEXT MERGE (HYBRID)
-   ============================================ */
 (function () {
     const canvas = document.getElementById('matrix-canvas');
     if (!canvas) return;
@@ -57,8 +51,6 @@ let gIsLight = false;
     const CHARS = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホ0123456789ABCDEF<>{}[]()#@$%^&*';
     const FS = 14;
     let cols = [];
-
-    // Khởi tạo mưa gốc
     function initCols() {
         const n = Math.floor(canvas.width / FS);
         cols = Array.from({ length: n }, () => Math.random() * -(canvas.height / FS) * 2);
@@ -89,12 +81,9 @@ let gIsLight = false;
 
     setInterval(draw, 48);
 })();
-/* ============================================
-   3. TYPING TAGLINE
-   ============================================ */
 (function () {
     const lines = [
-        'First-year Student',
+        'Second-year Student',
         'Junior Developer',
         'Kn1ghT',
     ];
@@ -114,10 +103,6 @@ let gIsLight = false;
     }
     setTimeout(tick, 800);
 })();
-
-/* ============================================
-   4. SYSTEM LATENCY / TIME
-   ============================================ */
 (function () {
     const latEl = document.getElementById('sys-lat');
     const timeEl = document.getElementById('sys-time');
@@ -137,10 +122,6 @@ let gIsLight = false;
     setInterval(updateTime, 1000);
     setInterval(pingLat, 3000);
 })();
-
-/* ============================================
-   7. DARK / LIGHT MODE — RIPPLE CONCENTRIC + RAIN
-   ============================================ */
 (function () {
     const btn = document.getElementById('theme-toggle-btn');
     let isLight = false;
@@ -203,10 +184,6 @@ let gIsLight = false;
         }
     });
 })();
-
-/* ============================================
-   8. RAIN DROPS
-   ============================================ */
 (function () {
     const container = document.getElementById('rain-container');
     if (!container) return;
@@ -224,13 +201,10 @@ let gIsLight = false;
         container.appendChild(drop);
     }
 })();
-/* ============================================
-   10. 3D CARD TILT
-   ============================================ */
 (function () {
     const card = document.querySelector('.profile-card');
     if (!card) return;
-    const MAX = 8; // độ nghiêng tối đa
+    const MAX = 8;
 
     document.addEventListener('mousemove', e => {
         const rect = card.getBoundingClientRect();
@@ -245,9 +219,6 @@ let gIsLight = false;
     });
     card.style.transition = 'transform 0.08s linear';
 })();
-/* ============================================
-   12. SECTION REVEAL
-   ============================================ */
 (function () {
     const sections = document.querySelectorAll('.profile-section');
     const obs = new IntersectionObserver(entries => {
@@ -263,9 +234,6 @@ let gIsLight = false;
         obs.observe(s);
     });
 })();
-/* ============================================
-   HOLOGRAPHIC SHINE
-   ============================================ */
 (function () {
     const card = document.querySelector('.profile-card');
     if (!card) return;
@@ -277,9 +245,6 @@ let gIsLight = false;
         card.style.setProperty('--my', y);
     });
 })();
-/* ============================================
-   COPY TO CLIPBOARD (CONTACT)
-   ============================================ */
 (function () {
     const items = document.querySelectorAll('.contact-item');
     let toast = document.createElement('div');
@@ -300,9 +265,6 @@ let gIsLight = false;
         });
     });
 })();
-/* ============================================
-   SOUND EFFECTS (Web Audio API)
-   ============================================ */
 (function () {
     let ctx;
     function getCtx() {
@@ -324,28 +286,20 @@ let gIsLight = false;
             osc.stop(c.currentTime + duration);
         } catch(e) {}
     }
-
-    // Hover buttons → subtle beep
     document.querySelectorAll('.btn-pro, .contact-item').forEach(el => {
         el.addEventListener('mouseenter', () => playTone(880, 'sine', 0.08, 0.04));
     });
 
-    // Click → confirm tone
     document.querySelectorAll('.btn-pro').forEach(el => {
         el.addEventListener('click', () => {
             playTone(660, 'square', 0.06, 0.05);
             setTimeout(() => playTone(880, 'square', 0.1, 0.04), 60);
         });
     });
-
-    // Theme toggle → sweep
     document.getElementById('theme-toggle-btn')?.addEventListener('click', () => {
         [440, 550, 660, 880].forEach((f, i) => setTimeout(() => playTone(f, 'sine', 0.15, 0.05), i * 60));
     });
 })();
-/* ============================================
-   NAME SCRAMBLE ON HOVER
-   ============================================ */
 (function () {
     const el = document.querySelector('.profile-name');
     if (!el) return;
@@ -358,9 +312,6 @@ let gIsLight = false;
         el.textContent = (el.textContent.trim() === originalName) ? aliasName : originalName;
     });
 })();
-/* ============================================
-   IDLE AVATAR HEARTBEAT
-   ============================================ */
 (function () {
     const container = document.querySelector('.avatar-glitch-container');
     if (!container) return;
