@@ -7,7 +7,7 @@
 html, body {
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden !important; /* Ép chết kéo ngang */
+    overflow-x: hidden !important;
 }
 
 body {
@@ -21,8 +21,8 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%; /* Sửa 100vw thành 100% */
-    height: 100%; /* Sửa 100vh thành 100% */
+    width: 100%;
+    height: 100%;
     z-index: -3;
     background-color: #050508;
     background-image:
@@ -434,9 +434,7 @@ body {
 
 .profile-main-content {
     padding: 50px;
-    overflow-y: auto; /* Cho phép cuộn dọc */
-    
-    /* ── LÁ BÙA PHONG ẤN SỐ 2: KHÓA CHẶT CHIỀU NGANG ── */
+    overflow-y: auto;
     overflow-x: hidden; 
     
     scroll-behavior: smooth;
@@ -757,15 +755,11 @@ body {
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         z-index: 2;
         flex-shrink: 0;
-        
-        /* ĐẬP THÊM DÒNG NÀY: Phá phong ấn cuộn dọc của sidebar trên mobile */
         overflow: visible !important; 
     }
 
     .profile-main-content {
         padding: 25px 20px;
-        
-        /* ── LÁ BÙA PHÁ PHONG ẤN MOBILE: ÉP VỀ VISIBLE TOÀN DIỆN ── */
         overflow: visible !important; 
         
         scrollbar-width: none;
@@ -816,12 +810,10 @@ body {
         overflow-x: auto;
     }
     .stats-grid {
-        /* Đập vỡ 4 cột, ép về 2 cột mỗi hàng (2x2) */
         grid-template-columns: repeat(2, 1fr); 
     }
 
     .badge-grid {
-        /* Sẵn tiện bóp luôn dàn Achievements về 2 cột cho đồng bộ, để 3 cột chữ nó lại chật */
         grid-template-columns: repeat(2, 1fr); 
     }
 
@@ -932,10 +924,6 @@ body {
         height: 100px !important;
     }
 }
-
-/* ============================================
-   DARK / LIGHT MODE — RIPPLE TRANSITION
-   ============================================ */
 
 :root {
     --bg-color: #050508;
@@ -1106,21 +1094,13 @@ body {
 .orb-2 {
     background: var(--orb2-color);
 }
-
-/* Snowflake — ẩn ở light mode */
 body.light-mode .snowflakes {
     display: none;
 }
-
-/* Chữ sidebar light mode */
 body.light-mode #sys-lat,
 body.light-mode #sys-time {
     color: #333 !important;
 }
-
-/* ============================================
-   NÚT TOGGLE
-   ============================================ */
 #theme-toggle-btn {
     position: fixed;
     top: 18px;
@@ -1146,10 +1126,6 @@ body.light-mode #sys-time {
     transform: scale(1.12) rotate(15deg);
     box-shadow: 0 0 20px var(--accent);
 }
-
-/* ============================================
-   RIPPLE — vòng tròn đồng tâm lan ra
-   ============================================ */
 .theme-ripple-ring {
     position: fixed;
     border-radius: 50%;
@@ -1164,8 +1140,6 @@ body.light-mode #sys-time {
 body.light-mode .theme-ripple-ring {
     border-color: rgba(124, 58, 237, 0.4);
 }
-
-/* Lớp fill đặc phủ sau ripple */
 #theme-ripple-fill {
     position: fixed;
     top: 0;
@@ -1193,10 +1167,6 @@ body.light-mode .theme-ripple-ring {
         opacity: 0;
     }
 }
-
-/* ============================================
-   MƯA RƠI
-   ============================================ */
 .raindrops {
     position: fixed;
     top: 0;
@@ -1230,8 +1200,6 @@ body.light-mode .raindrops {
         transform: rotate(20deg) translateY(115vh);
     }
 }
-
-/* Trả lại màu sắc cầu vồng cho các nút ở Light Mode */
 body.light-mode .glow-orb {
     opacity: 0.15;
 }
@@ -1247,10 +1215,6 @@ body.light-mode .glow-orb {
         opacity: 0;
     }
 }
-
-/* ============================================
-   SECTION REVEAL
-   ============================================ */
 .profile-section {
     opacity: 0;
     transform: translateY(20px);
@@ -1261,10 +1225,6 @@ body.light-mode .glow-orb {
     opacity: 1;
     transform: translateY(0);
 }
-
-/* ============================================
-   BOOT SCREEN
-   ============================================ */
 #boot-screen {
     position: fixed;
     inset: 0;
@@ -1309,10 +1269,6 @@ body.light-mode .glow-orb {
     opacity: 0;
     pointer-events: none;
 }
-
-/* ============================================
-   HOLOGRAPHIC SHINE
-   ============================================ */
 .profile-card::before {
     content: '';
     position: absolute;
@@ -1329,10 +1285,6 @@ body.light-mode .glow-orb {
     position: relative;
     z-index: 1;
 }
-
-/* ============================================
-   ONLINE STATUS
-   ============================================ */
 .status-badge {
     display: inline-flex;
     align-items: center;
@@ -1383,9 +1335,6 @@ body.light-mode .status-dot {
     box-shadow: 0 0 6px #16a34a;
 }
 
-/* ============================================
-   COPY TOAST
-   ============================================ */
 .copy-toast {
     position: fixed;
     bottom: 28px;
@@ -1553,16 +1502,11 @@ body.light-mode .now-playing {
 body.light-mode .np-title {
     color: #4c1d95;
 }
-
-/* FIX SIDEBAR OVERFLOW */
 .profile-sidebar {
     overflow-y: auto;
     overflow-x: hidden;
     padding: 24px 28px;
-    /* giảm padding từ 40px xuống */
 }
-
-/* Ẩn scrollbar nhưng vẫn scroll được */
 .profile-sidebar::-webkit-scrollbar {
     width: 3px;
 }
@@ -1576,7 +1520,6 @@ body.light-mode .np-title {
     background: transparent;
 }
 
-/* Thu nhỏ khoảng cách các widget trong sidebar */
 .avatar-glitch-container {
     margin-bottom: 12px;
 }
@@ -1617,7 +1560,6 @@ body.light-mode .np-title {
     margin-top: 8px;
 }
 
-/* XP BAR */
 .xp-bar-wrap {
     width: 100%;
     margin: 6px 0 10px;
@@ -1668,7 +1610,6 @@ body.light-mode .xp-class {
     color: #7c3aed;
 }
 
-/* NEON FLICKER HEADINGS */
 .profile-section h2 {
     animation: neonFlicker 10s infinite;
 }
@@ -1733,7 +1674,6 @@ body.light-mode .profile-section h2 {
     }
 }
 
-/* NAME SCRAMBLE */
 .profile-name {
     cursor: default;
 }
@@ -1766,7 +1706,6 @@ body.light-mode .profile-section h2 {
     }
 }
 
-/* SKILL BARS */
 .skill-bars {
     margin-top: 14px;
     display: flex;
@@ -1813,7 +1752,6 @@ body.light-mode .skill-track {
     background: rgba(0, 0, 0, 0.05);
 }
 
-/* GAME CARDS */
 .game-cards {
     display: flex;
     gap: 10px;
@@ -1907,7 +1845,7 @@ body.light-mode .game-card .gc-name {
 .vibe-icon { font-size: 13px; }
 .vibe-text { color: #b482ff; font-style: italic; }
 body.light-mode .vibe-text { color: #7c3aed; }
-/* ── STATS GRID ── */
+
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1953,11 +1891,9 @@ body.light-mode .vibe-text { color: #7c3aed; }
 .stat-label {
     font-family: monospace;
     font-size: 9px;
-    
-    /* 1. Mặc định ở DARK MODE: Chuyển thành màu trắng (hoặc trắng mờ tí cho sang) */
+
     color: rgba(255, 255, 255, 0.85); 
-    
-    /* 2. ÉP CHỮ ĐẬM: Đập hẳn font-weight 800 hoặc bold vào cho nét */
+
     font-weight: 800; 
     
     letter-spacing: 1.5px;
@@ -1969,10 +1905,10 @@ body.light-mode .stat-card {
     border-color: rgba(124,58,237,0.15);
 }
 body.light-mode .stat-label { 
-    /* 3. Chuyển thành màu đen (hoặc đen tuyền #000) */
+
     color: #111111; 
 }
-/* ── ACHIEVEMENT BADGES ── */
+
 .badge-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -2004,7 +1940,6 @@ body.light-mode .stat-label {
     box-shadow: 0 8px 24px rgba(180,130,255,0.15);
 }
 
-/* Shimmer khi hover badge unlocked */
 .badge-card.unlocked::after {
     content: '';
     position: absolute;
@@ -2022,10 +1957,9 @@ body.light-mode .stat-label {
     font-size: 10px;
     letter-spacing: 1px;
     margin-bottom: 4px;
-    
-    /* Mặc định DARK MODE: Chuyển hẳn sang màu trắng sáng */
+
     color: rgba(255, 255, 255, 0.95);
-    /* Ép chữ siêu đậm */
+
     font-weight: 800; 
 }
 
@@ -2033,7 +1967,7 @@ body.light-mode .stat-label {
     font-family: monospace;
     font-size: 8px;
     letter-spacing: 2px;
-    /* Ép chữ siêu đậm cho cả dàn độ hiếm */
+
     font-weight: 900; 
 }
 .badge-rarity.common   { color: #9ca3af; }
@@ -2060,12 +1994,12 @@ body.light-mode .stat-label {
 
 body.light-mode .badge-card { background: rgba(124,58,237,0.04); border-color: rgba(124,58,237,0.12); }
 body.light-mode .badge-name { 
-    /* Chuyển thành màu đen tuyền ở Light Mode */
+
     color: #111111; 
 }
 body.light-mode .badge-tooltip { background: rgba(255,255,255,0.95); color: #4c1d95; border-color: rgba(124,58,237,0.3); }
 body.light-mode .badge-rarity {
-    /* Khi sang Light Mode thì tắt hết text-shadow phát quang để nhìn cho rõ */
+
     text-shadow: none !important;
 }
 @media screen and (max-width: 850px) {
