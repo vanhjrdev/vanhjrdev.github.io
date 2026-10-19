@@ -1,40 +1,21 @@
 let gIsLight = false;
 (function () {
-    const screen = document.getElementById('boot-screen');
-    const textEl = document.getElementById('boot-text');
-    const bar    = document.getElementById('boot-bar');
-    if (!screen) return;
+    const enterScreen = document.getElementById('enter-screen');
+    const bgMusic = document.getElementById('bg-music');
+    if (!enterScreen) return;
 
-    const lines = [
-        { t: '> Initializing OS', c: '#b482ff' },
-        { t: '> Loading kernel modules...      [OK]', c: '#888' },
-        { t: '> Mounting filesystem...         [OK]', c: '#888' },
-        { t: '> Checking network interface...  [OK]', c: '#888' },
-        { t: '> Authenticating user: Kn1ghT   [OK]', c: '#98c379' },
-        { t: '> Decrypting profile data...     [OK]', c: '#888' },
-        { t: '> Starting matrix renderer...    [OK]', c: '#888' },
-        { t: '\n  Welcome back, Phan Việt Anh.', c: '#e0c3fc' },
-    ];
-
-    let i = 0;
-    function nextLine() {
-        if (i >= lines.length) {
-            bar.style.width = '100%';
-            setTimeout(() => {
-                screen.classList.add('hide');
-                setTimeout(() => screen.remove(), 850);
-            }, 600);
-            return;
+    enterScreen.addEventListener('click', function () {
+        if (bgMusic) {
+            bgMusic.volume = 0.6;
+            bgMusic.play().catch(err => console.log('Audio play error:', err));
         }
-        const span = document.createElement('span');
-        span.style.color = lines[i].c;
-        span.textContent = lines[i].t + '\n';
-        textEl.appendChild(span);
-        bar.style.width = ((i + 1) / lines.length * 100) + '%';
-        i++;
-        setTimeout(nextLine, i === lines.length ? 400 : 160 + Math.random() * 120);
-    }
-    nextLine();
+
+        // Làm mờ màn hình chờ và gỡ khỏi DOM
+        enterScreen.classList.add('hide');
+        setTimeout(() => {
+            enterScreen.remove();
+        }, 850);
+    }, { once: true });
 })();
 (function () {
     const canvas = document.getElementById('matrix-canvas');
